@@ -17,6 +17,6 @@ intalar o express
     npm i express
 instalar as dependencias de typos do express
     npm i --save-dev @types/express
-thunder client para testar links de apis localmente
+extensão thunder client para testar links de apis localmente
 
 
