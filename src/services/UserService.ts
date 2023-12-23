@@ -24,7 +24,7 @@ export class UserService{
     }
 
     getAllUsers = () => {
-        console.log(`todos usuarios`, db)
+        return db
     }
 
 
