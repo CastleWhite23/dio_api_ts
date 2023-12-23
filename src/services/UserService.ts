@@ -20,7 +20,7 @@ export class UserService{
         }      
 
         db.push(user)
-
+        console.log(`Db atualizado`, db)
     }
 
 
