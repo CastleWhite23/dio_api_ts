@@ -23,5 +23,9 @@ export class UserService{
         console.log(`Db atualizado`, db)
     }
 
+    getAllusers = () => {
+        console.log(`todos usuarios`, db)
+    }
+
 
 }
