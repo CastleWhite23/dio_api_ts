@@ -16,10 +16,6 @@ server.get("/", (request: Request, response: Response)=>{
 })
 
 
-server.post("/user", userController.createUser)
-server.get("/user", userController.getAllUsers)
-
-
 
 
 
