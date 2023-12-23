@@ -15,4 +15,10 @@ export class UserController {
 
         return response.status(201).json({ message: "Registro criado" })
     }
+
+    getAllUsers = (request: Request, response: Response) => {
+    
+        userService.getAllUsers()
+        return response.status(200).json({ message: "Registro criado" })
+    }
 }
