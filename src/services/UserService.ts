@@ -23,7 +23,7 @@ export class UserService{
         console.log(`Db atualizado`, db)
     }
 
-    getAllusers = () => {
+    getAllUsers = () => {
         console.log(`todos usuarios`, db)
     }
 
