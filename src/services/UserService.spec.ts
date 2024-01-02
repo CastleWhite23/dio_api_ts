@@ -10,6 +10,6 @@ describe("UserService", ()=>{
 
         userService.createUser("pedro", "pedro@email")
 
-        expect(mockConsole).toHaveBeenCalled()
+        expect(mockConsole).toHaveBeenCalledWith("DB atualizado " + mockDb)
     })
 })
