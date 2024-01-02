@@ -20,3 +20,5 @@ instalar as dependencias de typos do express
 extensão thunder client para testar links de apis localmente
 
 
+para testar com ts
+npm i -D jest ts-jest @types/jest
