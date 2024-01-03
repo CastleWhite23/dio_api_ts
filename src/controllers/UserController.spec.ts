@@ -20,9 +20,9 @@ describe('UserController', ()=>{
             }
         } as Request;
         const mockResponse = makeMockResponse();
-        const response = userController.createUser(mockRequest, mockResponse);
+        userController.createUser(mockRequest, mockResponse);
 
-        console.log(response)
+        expect(mockResponse.state.status).toBe(201)
     });
 
 
