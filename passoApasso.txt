@@ -1,3 +1,4 @@
+ESTA SÃO AS MINHAS ANOTAÇÕES OU SEJA NÃO É UM TUTORIAL BLZ
 --- INICIANDO O AMBIENTE DE DESENVOLVIMENTO ---
 
 npm init --y pra inicializar o pakcag.json
@@ -24,3 +25,4 @@ para testar com ts
 npm i -D jest ts-jest @types/jest
 
 npx jest --init
+configurar o jest.config
