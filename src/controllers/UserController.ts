@@ -1,8 +1,6 @@
 import { Request, Response } from "express"
 import { UserService } from "../services/UserService"
 
-const userService =  new UserService()
-
 export class UserController {
     //definindo propriedade
     userService: UserService //propiedade da classe UserController que é do tipo UserService (toda classe é uma interface)
