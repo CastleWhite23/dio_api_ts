@@ -4,6 +4,17 @@ import { UserService } from "../services/UserService"
 const userService =  new UserService()
 
 export class UserController {
+    //definindo propriedade
+    userService: UserService //propiedade da classe UserController que é do tipo UserService (toda classe é uma interface)
+
+    //contruinda a propriedade
+    constructor(
+        userService = new UserService() //se nao tiver parametro de entrada esse é o valor padrao
+    ){
+        this.userService = userService // instanciado propriedade
+    }
+
+
     createUser = (request: Request, response: Response) => {
         const userData = request.body
 
@@ -11,14 +22,14 @@ export class UserController {
             return response.status(400).json({ message: "Bad Request! Nome é obrigatório"})
         }
 
-        userService.createUser(userData.name, userData.email)
+        this.userService.createUser(userData.name, userData.email)
 
         return response.status(201).json({ message: "Registro criado" })
     }
 
     getAllUsers = (request: Request, response: Response) => {
     
-       const Users =  userService.getAllUsers()
+       const Users =  this.userService.getAllUsers()
         return response.status(200).json(Users)
     }
 
