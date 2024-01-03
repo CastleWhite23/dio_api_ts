@@ -2,9 +2,6 @@ import { UserService } from "../services/UserService"
 import { UserController } from "./UserController"
 import { Params } from 'express-serve-static-core'
 import { Request, Response } from "express"
-import { json } from "stream/consumers"
-
-
 
 type MockResponse<Tresult> = Response & {
     state: {
@@ -15,7 +12,7 @@ type MockResponse<Tresult> = Response & {
 
 
 describe('UserController', ()=>{
-    const mockUserService: Partial<UserService>= {} //. O uso de Partial<T> é uma característica do TypeScript que indica que não é necessário fornecer todas as propriedades definidas em UserService no objeto mockUserService.
+    const mockUserService: Partial<UserService> = {} //. O uso de Partial<T> é uma característica do TypeScript que indica que não é necessário fornecer todas as propriedades definidas em UserService no objeto mockUserService.
 
     const userController = new UserController(mockUserService as UserService)
 
@@ -47,20 +44,13 @@ describe('UserController', ()=>{
 
     }
 
+    
+    it('Deve adicionar um novo usuario', () => {
+        const mockRequest = makeMockRequest({});
+        const mockResponse = makeMockResponse();
+        const response = userController.createUser(mockRequest, mockResponse);
+    });
 
-
-
-
-
-
-
-    it('Deve adicionar um novo usuario', ()=>{
-        const mokcRequest  = makeMockRequest({})
-        const MockResponse = makeMockResponse()
-        const response = userController.createUser(mokcRequest, MockResponse)
-
-        console.log(userController)
-    })
 
 
 
