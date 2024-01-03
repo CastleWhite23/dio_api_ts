@@ -23,6 +23,7 @@ describe('UserController', ()=>{
         userController.createUser(mockRequest, mockResponse);
 
         expect(mockResponse.state.status).toBe(201)
+        expect(mockResponse.state.json).toMatchObject({ message: "Registro criado"})
     });
 
 
