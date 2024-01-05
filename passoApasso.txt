@@ -1,0 +1,28 @@
+ESTA SÃO AS MINHAS ANOTAÇÕES OU SEJA NÃO É UM TUTORIAL BLZ
+--- INICIANDO O AMBIENTE DE DESENVOLVIMENTO ---
+
+npm init --y pra inicializar o pakcag.json
+npm i -D typescript ts-node-dev para instalar as depencias em ambientede de desenvolvimento
+npx tsc --init pra inicializar o typescript no projeto
+tsc transpila o código ts pra js
+ "build": "rimraf ./build && tsc", -- exclui a pasta build anterior e transpila o código dnv
+
+ ---NO TSCONFIG ---
+ "include": [
+    "src"
+]  -- representa o repositório para tranpilar o arquivo
+"outDir": "./build",   -- representa o repositorio quevai ser criado quando transpilarmos o código
+
+---- CRIANDO ROTAS ----
+intalar o express 
+    npm i express
+instalar as dependencias de typos do express
+    npm i --save-dev @types/express
+extensão thunder client para testar links de apis localmente
+
+
+para testar com ts
+npm i -D jest ts-jest @types/jest
+
+npx jest --init
+configurar o jest.config
