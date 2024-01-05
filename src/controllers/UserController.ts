@@ -1,37 +1,36 @@
-import { Request, Response } from "express"
-import { UserService } from "../services/UserService"
+import { Request, Response } from 'express'
+import { UserService } from '../services/UserService'
 
 export class UserController {
-    //definindo propriedade
-    userService: UserService //propiedade da classe UserController que é do tipo UserService (toda classe é uma interface)
+    userService: UserService
 
-    //contruinda a propriedade
     constructor(
-        userService = new UserService() //se nao tiver parametro de entrada esse é o valor padrao
+        userService = new UserService()
     ){
-        this.userService = userService // instanciado propriedade
+        this.userService = userService
     }
 
+    createUser = (request: Request, response: Response): Response => {
+        const user = request.body
 
-    createUser = (request: Request, response: Response) => {
-        const userData = request.body
-
-        if(!userData.name){
-            return response.status(400).json({ message: "Bad Request! Nome é obrigatório"})
+        if(!user.name){
+            return response.status(400).json({ message: 'Bad request! Name obrigatório'})
         }
 
-        this.userService.createUser(userData.name, userData.email)
+        if(!user.email){
+            return response.status(400).json({ message: 'Bad request! Email obrigatório'})
+        }
 
-        return response.status(201).json({ message: "Registro criado" })
+        this.userService.createUser(user.name, user.email)
+        return response.status(201).json({ message: 'Usuário criado'})
     }
 
     getAllUsers = (request: Request, response: Response) => {
-    
-       const Users =  this.userService.getAllUsers()
-        return response.status(200).json(Users)
-    }
-
-    delete = (request: Request, response: Response)=>{
-        response.status(200).json({message: 'usuario deletado'})
+        const users = this.userService.getAllUsers()
+        return response.status(200).json(users)
+    } 
+    delete = (request: Request, response: Response) => {
+        this.userService.delete()
+        return response.status(200).json({message: 'Usuário deletado'})
     }
 }

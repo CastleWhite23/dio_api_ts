@@ -1,33 +1,74 @@
-import { makeMockRequest } from "../__mocks__/mockRequest.mock"
-import { makeMockResponse } from "../__mocks__/mockResponse.mock"
-import { UserService } from "../services/UserService"
-import { UserController } from "./UserController"
-import { Request } from "express"
+import { UserController } from "./UserController";
+import { UserService } from '../services/UserService'
+import { Request } from 'express'
+import { makeMockResponse } from "../__mocks__/mockResponse.mock";
 
-describe('UserController', ()=>{
+describe('UserController', () => {
     const mockUserService: Partial<UserService> = {
-        createUser: jest.fn()
+        createUser: jest.fn(),
+        getAllUsers: jest.fn(),
+        delete: jest.fn()
+    }
+    
+    const userController = new UserController(mockUserService as UserService);
 
-    }//. O uso de Partial<T> é uma característica do TypeScript que indica que não é necessário fornecer todas as propriedades definidas em UserService no objeto mockUserService.
-
-    const userController = new UserController(mockUserService as UserService)
-
-    it('Deve adicionar um novo usuario', () => {
+    it('Deve adicionar um novo usuário', () => {
         const mockRequest = {
             body: {
-                name: "pedro",
-                email: "pedro@email"
+                name: 'Nath',
+                email: 'nath@test.com'
             }
-        } as Request;
-        const mockResponse = makeMockResponse();
-        userController.createUser(mockRequest, mockResponse);
-
+        } as Request
+        const mockResponse = makeMockResponse()
+        userController.createUser(mockRequest, mockResponse)
         expect(mockResponse.state.status).toBe(201)
-        expect(mockResponse.state.json).toMatchObject({ message: "Registro criado"})
-    });
+        expect(mockResponse.state.json).toMatchObject({ message: 'Usuário criado' })
+    })
 
+    it('Verificar a resposta de erro caso o usuário não informe o name', ()=>{
+        const mockRequest = {
+            body:{
+                email: 'pedro@email'
+            }
+        } as Request
 
+        const mockResponse = makeMockResponse()
+        userController.createUser(mockRequest, mockResponse)
 
+        expect(mockResponse.state.status).toBe(400)
+        expect(mockResponse.state.json).toMatchObject({ message: "Bad request! Name obrigatório"})
+    })
 
+    it(' O usuário nâo pode ser criado caso não informe o email', ()=>{
+        const mockRequest = {
+            body:{
+                name: 'pedro'
+            }
+        } as Request
 
+        const mockResponse = makeMockResponse()
+        userController.createUser(mockRequest, mockResponse)
+
+        expect(mockResponse.state.status).toBe(400)
+        expect(mockResponse.state.json).toMatchObject({ message: "Bad request! Email obrigatório"})
+    })
+
+    it('Verificar se a funcao getAllUsers esta sendo chamada', ()=>{
+        const mockRequest = {} as Request
+        const mockResponse = makeMockResponse()
+        userController.getAllUsers(mockRequest, mockResponse)
+
+        expect(mockResponse.state.status).toBe(200)
+
+    })
+
+    it('Excluir usuarios', ()=>{
+        const mockRequest = {} as Request
+        const mockResponse = makeMockResponse()
+        userController.delete(mockRequest, mockResponse)
+
+        expect(mockResponse.state.status).toBe(200)
+        expect(mockResponse.state.json).toMatchObject({ message: 'Usuário deletado' })
+
+    })
 })

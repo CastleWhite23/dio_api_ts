@@ -1,15 +1,17 @@
-import { UserService } from "./UserService"
-import { User } from "./UserService"
-describe("UserService", ()=>{
+import { User, UserService } from "./UserService";
+
+describe('UserService', () => {
     const mockDb: User[] = []
-    const userService =  new UserService(mockDb) //aqui esta sendo mockado o banco de dados para nao ter acesso as informacoes do banco de dados
-    it('Receber um console.log', ()=>{
-        
-       
-        const mockConsole = jest.spyOn(global.console, "log")
+    const userService = new UserService(mockDb);
 
-        userService.createUser("pedro", "pedro@email")
-
-        expect(mockConsole).toHaveBeenCalledWith("DB atualizado " + mockDb)
+    it('Deve adicionar um novo usuário', () => {
+        const mockConsole = jest.spyOn(global.console, 'log')
+        userService.createUser('nath', 'nath@test.com');
+        expect(mockConsole).toHaveBeenCalledWith('DB atualizado', mockDb)
+    })
+    it('Deve excluir um usuário', () => {
+        const mockConsole = jest.spyOn(global.console, 'log')
+        userService.delete();
+        expect(mockConsole).toHaveBeenCalledWith('DB atualizado')
     })
 })
