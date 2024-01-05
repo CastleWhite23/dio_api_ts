@@ -35,5 +35,6 @@ npm i reflect-metadata sqlite3
 
      "experimentalDecorators": true,                   /* Enable experimental support for TC39 stage 2 draft decorators. */
     "emitDecoratorMetadata": true,  
+    allowjs:m true
 
     habilitando as linhas acima no ts-config
