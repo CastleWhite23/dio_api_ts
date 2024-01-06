@@ -7,7 +7,8 @@
     "build": "rimraf ./build && tsc",
     "start": "node build/index.js",
     "dev": "ts-node-dev src/index.ts",
-    "test": "jest"
+    "test": "jest",
+    "tyoeorm": "node ./node_modules/typeorm/cli.js"
   },
   "keywords": [],
   "author": "",
