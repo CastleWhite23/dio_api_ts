@@ -51,5 +51,5 @@ e  adicionar module.exports = {
     }
 }
 
-e no pc.json adicionar em scripts "typeorm" : "typeorm-ts-node-common.js"
+e no pc.json adicionar em scripts "typeorm" : "typeorm-ts-node-commonjs"
 npm run migration:create src/database/migration/User
