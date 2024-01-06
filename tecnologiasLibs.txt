@@ -38,3 +38,17 @@ npm i reflect-metadata sqlite3
     allowjs:m true
 
     habilitando as linhas acima no ts-config
+
+criar arquivo de config ormconfig.js
+e  adicionar module.exports = {
+    type: "sqlite",
+    database: ".src//database/db.sqlite",
+    migrations: [
+        "./src/database/migrations"
+    ],
+    cli: { //podemos atraves disso criar e manipular nossas tabelas
+        migrationDir: "./src/database/migrations"
+    }
+}
+
+e no pc.json adicionar em scripts "typeorm" : "node node_modules/typeorm/cli.js"
