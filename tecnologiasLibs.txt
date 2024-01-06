@@ -53,4 +53,5 @@ e  adicionar module.exports = {
 
 e no pc.json adicionar em scripts "typeorm" : "typeorm-ts-node-commonjs"
 npm run migration:create src/database/migration/User
-npm run typeorm migration:run -- -d src/database/index.ts  pra rodar as migrations
+npm run typeorm migration:run -- -d src/database/index.ts  pra rodar as migrations do up
+npm run typeorm migration:revert -- -d src/database/index.ts  pra rodar as migrations do dawn
