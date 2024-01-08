@@ -1,12 +1,12 @@
 import { EntityManager } from "typeorm";
 
-interface MockImplementatiosArgs{
+interface MockManagerArgs {
     saveReturn?: object | [object]
 }
 
-export const getMockEntityManager = async({
-    saveReturn =  undefined
-}: MockImplementatiosArgs): Promise<EntityManager> =>{
+export const getMockEntityManager = async ({
+    saveReturn = undefined
+}: MockManagerArgs): Promise<EntityManager> => {
     const manager: Partial<EntityManager> = {}
 
     manager.save = jest.fn().mockImplementation(() => Promise.resolve(saveReturn))
