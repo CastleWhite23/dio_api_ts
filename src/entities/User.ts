@@ -6,13 +6,13 @@ export class User{
     @PrimaryColumn()
     user_id: string
 
-    @Column()
+    @Column({ nullable: false})
     name: string
 
-    @Column()
+    @Column({ nullable: false})
     email: string
 
-    @Column()
+    @Column({ nullable: false})
     password: string
 
     constructor(
