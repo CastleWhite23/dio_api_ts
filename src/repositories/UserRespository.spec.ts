@@ -17,7 +17,7 @@ describe('UserRepository', ()=>{
 
     beforeAll( async()=>{
         managerMock =  await getMockEntityManager({})
-        const userRepository = new UserRepository(managerMock as EntityManager)
+        userRepository = new UserRepository(managerMock as EntityManager)
     })
 
     it('Deve criar um novo usuario no banco de dados', async ()=>{
