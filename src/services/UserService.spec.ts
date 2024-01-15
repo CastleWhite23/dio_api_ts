@@ -1,6 +1,10 @@
 import { UserRepository } from "../repositories/UserRepository";
 import {UserService } from "./UserService";
 jest.mock("../repositories/UserRepository")
+jest.mock("../database", ()=>{
+    initialize: jest.fn()
+})
+
 const mockRepository =  require("../repositories/UserRepository")
 
 describe('UserService', () => {
