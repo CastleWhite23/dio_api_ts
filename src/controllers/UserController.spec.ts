@@ -3,15 +3,18 @@ import { UserService } from '../services/UserService'
 import { Request } from 'express'
 import { makeMockResponse } from "../__mocks__/mockResponse.mock";
 
+
+const mockUserService = {
+    createUser: jest.fn()
+}
+
 jest.mock('../services/UserService', () => {
     return {
         UserService: jest.fn().mockImplementation(() => {
-            return {
-                createUser: jest.fn()
-            }
-        })
-    }
+            return mockUserService
+    })}
 })
+
 describe('UserController', () => {
 
 
