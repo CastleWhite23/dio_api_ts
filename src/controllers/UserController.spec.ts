@@ -3,12 +3,19 @@ import { UserService } from '../services/UserService'
 import { Request } from 'express'
 import { makeMockResponse } from "../__mocks__/mockResponse.mock";
 
-describe('UserController', () => {
-    const mockUserService: Partial<UserService> = {
-        createUser: jest.fn()
+jest.mock('../services/UserService', () => {
+    return {
+        UserService: jest.fn().mockImplementation(() => {
+            return {
+                createUser: jest.fn()
+            }
+        })
     }
+})
+describe('UserController', () => {
 
-    const userController = new UserController(mockUserService as UserService);
+
+    const userController = new UserController();
 
     it('Deve adicionar um novo usuário', () => {
         const mockRequest = {
