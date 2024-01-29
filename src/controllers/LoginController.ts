@@ -1,4 +1,5 @@
 import  { Request, Response } from 'express';
+import { sign } from 'jsonwebtoken'
 
 const user ={
     id:'123456',
